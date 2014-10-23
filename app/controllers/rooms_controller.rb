@@ -11,6 +11,8 @@ class RoomsController < ApplicationController
   # GET /rooms/1
   # GET /rooms/1.json
   def show
+    @room = Room.find(params[:id])
+    authorize @room
   end
 
   # GET /rooms/new

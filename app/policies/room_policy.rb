@@ -21,6 +21,17 @@ class RoomPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    if user.present?
+      if record.private && user.role?(0)
+        true
+      elsif record.private == false
+        true
+      end
+    end
+    # && user.role?(0) && record.private == true
+  end
+
   def edit?
     create?
   end
