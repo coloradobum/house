@@ -4,7 +4,8 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = policy_scope(Room)
+    authorize @rooms
   end
 
   # GET /rooms/1
@@ -15,6 +16,7 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   def new
     @room = Room.new
+    authorize @room
   end
 
   # GET /rooms/1/edit
